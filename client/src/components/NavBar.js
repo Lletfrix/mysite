@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Colors } from '../constants';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLanguage } from '../redux/actions';
 
 const LanguageButton = styled.button`
     border-radius: 4px;
@@ -11,14 +13,19 @@ const LanguageButton = styled.button`
     align-self: center;
     transition: background-color 0.25s;
     cursor: pointer;
-
     &:hover {
         background-color: ${Colors.DARK_GREY};
         color: white;
     }
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
 `;
 
 const LanguageSelector = ({style}) => {
+    const dispatch = useDispatch();
+    const selectedLanguage = useSelector( state => state.language );
     const selected = {
         borderWidth: 1.5,
         borderColor: Colors.DARK_GREY,
@@ -32,8 +39,8 @@ const LanguageSelector = ({style}) => {
 
     return (
         <div style={{display: 'flex'}}>
-        <LanguageButton style={selected}>EN</LanguageButton>
-        <LanguageButton style={unselected}>ES</LanguageButton>
+        <LanguageButton style={ selectedLanguage === 'EN' ? selected : unselected } onClick={ () => dispatch(setLanguage('EN')) }>EN</LanguageButton>
+        <LanguageButton style={ selectedLanguage === 'ES' ? selected : unselected } onClick={ () => dispatch(setLanguage('ES')) }>ES</LanguageButton>
         </div>
     )
 }
