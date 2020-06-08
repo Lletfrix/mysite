@@ -1,17 +1,8 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
-import { NavBar } from "./NavBar";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { NavBar, navbarHeight } from "./NavBar";
+import { HomeScreen } from './HomeScreen';
 import styled from 'styled-components';
-
-const body = {
-    width: '100%',
-    height: '110vh',
-    backgroundColor: '#eeb0be'
-}
 
 const FixedNavBar = styled(NavBar)`
     position: fixed;
@@ -34,7 +25,7 @@ const App = () => {
                     ABOUT
                 </Route>
                 <Route path="/">
-                    <div style={body}></div>
+                    <HomeScreen  style={{paddingTop: navbarHeight}}/>
                 </Route>
             </Switch>
         </Router>
@@ -42,13 +33,3 @@ const App = () => {
 }
 
 export default App;
-
-// export default function App() {
-//   return (
-//     <Router>
-//       <div>
-//
-//       </div>
-//     </Router>
-//   );
-// }

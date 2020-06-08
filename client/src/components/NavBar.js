@@ -5,6 +5,11 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLanguage } from '../redux/actions';
 
+const fontSize = 1.5;
+const padding = 24;
+const iconHeight = 40;
+export const navbarHeight = 24*2 + iconHeight;
+
 const LanguageButton = styled.button`
     border-radius: 4px;
     padding: 4px;
@@ -49,7 +54,7 @@ const Anchor = styled(Link)`
     color: ${Colors.DARK_GREY};
     text-decoration: none;
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: ${fontSize}rem;
     font-family: Share Tech Mono;
     transition: opacity 0.3;
     transition: background-color 0.25s;
@@ -74,7 +79,7 @@ export const NavBar = ({className}) => {
         display: 'flex',
         backgroundColor: '#f0f0f0',
         justifyContent: 'center',
-        padding: 24,
+        padding: padding,
     });
 
     const [ opacity, setOpacity ] = useState('100%');
@@ -99,7 +104,7 @@ export const NavBar = ({className}) => {
 
     return (
         <div style={containerStyle} className={className}>
-            <div style={{width: 40, height: 40, backgroundColor: Colors.DARK_GREY, marginRight: 24}}></div>
+            <div style={{width: iconHeight, height: iconHeight, backgroundColor: Colors.DARK_GREY, marginRight: 24}}></div>
             <div style={{display: 'flex', justifyContent: 'space-around', flexGrow: 1, alignItems: 'center'}}>
                 <Button text={"Home"} to={'/'} style={{opacity}}/>
                 <Button text={"Blog"} to={'/blog'} style={{opacity}}/>

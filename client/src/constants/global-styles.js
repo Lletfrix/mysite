@@ -5,4 +5,15 @@ export const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
     }
+
+    body {
+        width: 100vw;
+        min-height: 100vh;
+        display: flex;
+    }
+
+    #root {
+        flex-grow: 1;
+        display: flex;
+    }
 `;
