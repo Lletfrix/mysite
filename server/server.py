@@ -7,52 +7,61 @@ app = Flask(__name__)
 def hello_world():
     return 'Hello, World!'
 
-@app.route('/site/githubwidget')
-def github_widget():
-    payload = {
-        'query': """query {
-          user(login: "lletfrix") {
-            name
-            avatarUrl
-            bio
-            followers {
-              totalCount
-            }
-            following {
-              totalCount
-            }
-            pinnedItems(first: 10) {
-              edges {
-                node {
-                  ... on Repository {
-                    name
-                    description
-                    languages(first: 1, orderBy: {field: SIZE, direction: DESC}) {
-                      edges {
-                        node {
-                          name
-                          color
-                        }
-                      }
-                    }
-                  }
-                }
+@app.route('/site/githubwidget/<username>')
+def github_widget(username):
+    preQuery = '''query {
+      user(login: "'''
+    postQuery = '''") {
+      name
+      avatarUrl
+      bio
+      followers {
+        totalCount
+      }
+      following {
+        totalCount
+      }
+      repositories(privacy: PUBLIC) {
+        totalCount
+      }
+      pinnedItems(first: 10) {
+        edges {
+          node {
+            ... on Repository {
+              name
+              stargazers {
+                totalCount
               }
-            }
-            contributionsCollection {
-              contributionCalendar {
-                totalContributions
-                weeks {
-                  firstDay
-                  contributionDays {
-                    contributionCount
+              url
+              languages(first: 1, orderBy: {field: SIZE, direction: DESC}) {
+                edges {
+                  node {
+                    name
+                    color
                   }
                 }
               }
             }
           }
         }
-        """
+      }
+      contributionsCollection {
+        contributionCalendar {
+          totalContributions
+          weeks {
+            firstDay
+            contributionDays {
+              contributionCount
+            }
+          }
+        }
+      }
+    }
+  }
+    '''
+
+    payload = {
+        'query': preQuery+username+postQuery
     }
 
     headers = {

@@ -16,6 +16,7 @@ const LanguageButton = styled.button`
     font-family: Share Tech Mono;
     font-size: 1rem;
     align-self: center;
+    background-color: ${Colors.BACKGROUND_GREY};
     transition: background-color 0.25s;
     cursor: pointer;
     &:hover {
@@ -77,7 +78,7 @@ let prevScroll = window.pageYOffset;
 export const NavBar = ({className}) => {
     const [ containerStyle , setContainerStyle ] = useState({
         display: 'flex',
-        backgroundColor: '#f0f0f0',
+        backgroundColor: Colors.BACKGROUND_GREY,
         justifyContent: 'center',
         padding: padding,
     });
@@ -89,7 +90,7 @@ export const NavBar = ({className}) => {
             const currScroll = window.pageYOffset;
             if ( prevScroll > currScroll ) {
                 setOpacity('100%');
-                setContainerStyle({...containerStyle, backgroundColor: "#f0f0f0ff"});
+                setContainerStyle({...containerStyle, backgroundColor: `${Colors.BACKGROUND_GREY}ff`});
             } else {
                 setOpacity('0%');
                 setContainerStyle({...containerStyle, backgroundColor: '#ffffff00'});
