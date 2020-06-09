@@ -109,7 +109,7 @@ export const NavBar = ({className}) => {
             <div style={{display: 'flex', justifyContent: 'space-around', flexGrow: 1, alignItems: 'center'}}>
                 <Button text={"Home"} to={'/'} style={{opacity}}/>
                 <Button text={"Blog"} to={'/blog'} style={{opacity}}/>
-                <Button text={"About"} to={'/about'} style={{opacity}}/>
+                <Button text={"CV & experience"} to={'/about'} style={{opacity}}/>
             </div>
             <LanguageSelector style={{opacity}}/>
         </div>

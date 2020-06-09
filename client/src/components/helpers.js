@@ -42,7 +42,7 @@ export const HoverA = styled.a`
 `;
 
 export const Card = ({children, className, innerStyle, outerStyle, style, borderWidth, distance, hoverBackground}) => (
-    <div class={className} style={{...style, position: 'relative', display: 'flex'}}>
+    <div class={className} style={{ position: 'relative', display: 'flex', ...style}}>
         <BGHoverDiv
             backgroundColor={hoverBackground}
             style={{

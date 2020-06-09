@@ -67,12 +67,13 @@ export const GithubWidget = ({username, style}) => {
             }}
             outerStyle={{backgroundColor: Colors.changeLightness(Colors.BACKGROUND_GREY, -10)}}
             hoverBackground={Colors.randColor()}
-            distance={15}
+            style={style}
+            distance={10}
             borderWidth={2}
         >
             <VDiv style={{alignItems: 'center'}}>
                 <img src={response.avatarUrl} style={{borderRadius: 50, width: 75, height: 75, border: `2px solid`}}></img>
-                <HoverA color={'white'} backgroundColor={Colors.randColor()} style={{textAlign: 'center', fontFamily: 'Share Tech Mono', marginTop: 8, fontWeight: 'bold', fontSize: '1.2rem'}} href={`https://github.com/${username}`}>{response.name}</HoverA>
+                <HoverA color={'white'} backgroundColor={Colors.randColor()} style={{textAlign: 'center', fontFamily: 'Share Tech Mono', marginTop: 8, fontWeight: 'bold', fontSize: '1.1rem'}} href={`https://github.com/${username}`}>{response.name}</HoverA>
                 <span style={{textAlign: 'justify', fontFamily: 'Share Tech Mono', marginTop: 8, marginLeft: 8, marginRight: 8}}>{response.bio}</span>
                 <HDiv style={{alignSelf:'stretch', justifyContent: 'space-around', marginTop: 8}}>
                     <VDiv>
@@ -96,7 +97,7 @@ export const GithubWidget = ({username, style}) => {
                         </span>
                     </VDiv>
                 </HDiv>
-                <HoverSpan color={'white'} backgroundColor={Colors.randColor()} style={{textAlign: 'center', fontFamily: 'Share Tech Mono', fontWeight: 'bold', marginTop: 24, fontSize: '1.2rem'}}>Pinned repositories</HoverSpan>
+                <HoverSpan color={'white'} backgroundColor={Colors.randColor()} style={{textAlign: 'center', fontFamily: 'Share Tech Mono', fontWeight: 'bold', marginTop: 12, fontSize: '1.2rem'}}>Pinned repositories</HoverSpan>
                 { response.repos && response.repos.map(repo => (<ShowRepo {...repo} style={{alignSelf: 'stretch'}}/>) ) }
                 <HDiv>
                     <span style={{textAlign: 'center', fontFamily: 'Share Tech Mono', marginTop: 16}}>{response.totalContributions} contributions in the last year</span>
